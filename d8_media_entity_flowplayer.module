@@ -1,0 +1,48 @@
+<?php
+
+use \Drupal\media\Entity\Media;
+use \Drupal\d8_media_entity_flowplayer\MediaNodeReferences;
+
+function d8_media_entity_flowplayer_theme() {
+  return array(
+    'media__remote_video_flowplayer' => [
+      'template' => 'media--remote-video-flowplayer',
+      'base hook' => 'media',
+    ],
+  );
+}
+
+function d8_media_entity_flowplayer_preprocess_media(&$variables) {
+  if($variables['media']->bundle() === 'remote_video_flowplayer') {
+    $variables['playerId'] = 'b10b6267-c504-4213-b5dc-d153760f49c9';
+    $variables['videoId'] = $variables['media']
+      ->get('field_media_flowplayer')
+      ->value;
+  }
+}
+
+/**
+ * Implements hook_node_update().
+ * @param $Node \Drupal\node\Entity\Node
+ *
+ * @throws \Drupal\Core\Entity\EntityStorageException
+ */
+function d8_media_entity_flowplayer_node_update($Node) {
+  switch($Node->bundle()) {
+    case 'instructional_video':
+      MediaNodeReferences::updateFromNode($Node);
+      break;
+  }
+}
+
+/**
+ * Video nodes reference a video Media entity. This function
+ * saves the given node into the node_reference field on that
+ * Media Entity.
+ *
+ * @param $Node \Drupal\node\Entity\Node
+ * @return
+ *
+ * @throws \Drupal\Core\Entity\EntityStorageException
+ */
+

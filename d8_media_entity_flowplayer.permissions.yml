@@ -1,0 +1,4 @@
+administer d8_media_entity_flowplayer settings:
+  title: 'Administer Media entity Flowplayer module'
+  description: 'Perform administration tasks for the Media entity Flowplayer module.'
+  restrict access: TRUE

@@ -1,0 +1,9 @@
+name: Media entity Flowplayer
+type: module
+description: 'Media entity Flowplayer provider.'
+package: D8
+
+core: 8.x
+
+dependencies:
+  - 'drupal:media (>= 8.4)'

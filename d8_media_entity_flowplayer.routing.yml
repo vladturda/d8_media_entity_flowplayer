@@ -1,0 +1,7 @@
+d8_media_entity_flowplayer.admin_form:
+  path: '/admin/config/media/d8_media_entity_flowplayer'
+  defaults:
+    _form: '\Drupal\d8_media_entity_flowplayer\Form\SettingsForm'
+    _title: Media entity Flowplayer Settings
+  requirements:
+    _permission: 'administer d8_media_entity_flowplayer settings'
